@@ -1,0 +1,308 @@
+{
+
+	"Format": "2.0.0",
+
+	// Config //////////////////////////////////////////////////////////
+
+	"ConfigSchema":{
+
+		"BookTitle": {
+			"Default": "Autobiography of a Farmer",
+			"Description": "Choose a single word or phrase to describe the pinnacle of your life's work!"
+		},
+
+		"BookDescription": {
+			"Default": "A glimpse into the very simple life of a Stardew Valley farmer.",
+			"Description": "Describe your book in excruciating detail!"
+		},
+
+		"BookColor": {
+			"AllowValues": "Red, Yellow, LightGreen, DarkGreen, Blue, Purple, Pink, Black",
+			"Default": "Purple",
+			"Description": "Always judge a book by its cover!"
+		},
+
+		"BookLength": {
+			"Default": 400,
+			"Description": "Decide the length of the tales you tell!"
+		},
+
+		"WritingTime": {
+			"Default": 15120,
+			"Description": "Decide how long it will take to draft your masterpiece!"
+		},
+
+		"BookPrice": {
+			"Default": 10000,
+			"Description": "Decide what your passionately inscribed words are worth!"
+		},
+
+	},
+
+	// Content //////////////////////////////////////////////////////////
+
+	"Changes": [
+
+	// Add Starting Event //////////////////////////////////////////////////////////
+
+		{
+			"Action": "EditData",
+			"Target": "Data/Events/Farm", // e 1848481 Elliott 8h event
+			"Entries": {
+				"{{ModId}}_Inspiration/e 1848481/f Elliott 2000": "continue/26 25/farmer 15 31 0/pause 400//message \"You are overcome by a burst of inspiration.\"/pause 200/end",
+				}
+		},
+
+	// Load Object Textures //////////////////////////////////////////////////////////
+
+		{
+			"Action": "Load",
+			"Target": "Mods/{{ModId}}/book",
+			"FromFile": "Assets/{{BookColor}}_book.png"
+		},
+
+		{
+			"Action": "Load",
+			"Target": "Mods/{{ModId}}/manuscript",
+			"FromFile": "Assets/Manuscript.png"
+		},
+
+		{
+			"Action": "Load",
+			"Target": "Mods/{{ModId}}/desk",
+			"FromFile": "Assets/WritingDesk.png"
+		},
+
+		{
+			"Action": "Load",
+			"Target": "Mods/{{ModId}}/binder",
+			"FromFile": "Assets/BookBindingMachine.png"
+		},
+
+	// Add New Objects //////////////////////////////////////////////////////////
+
+		{
+			"Action": "EditData",
+			"Target": "Data/Objects",
+			"Entries": {
+				"{{ModId}}_book": {
+					"Name": "{{ModId}}_book",
+					"DisplayName": "{{BookTitle}}",
+					"Description": "{{BookDescription}}",
+					"Type": "Basic",
+					"Category": -26,
+					"Price": "{{BookPrice}}",
+					"Texture": "Mods/{{ModId}}/book",
+					"SpriteIndex": 0,
+					"ContextTags": [
+						"museum_donatable"
+					],
+				}
+			}
+		},
+
+		{
+			"Action": "EditData",
+			"Target": "Data/Objects",
+			"Entries": {
+				"{{ModId}}_manuscript": {
+					"Name": "{{ModId}}_manuscript",
+					"DisplayName": "{{i18n:Si.manuscript.name}}",
+					"Description": "{{i18n:Si.manuscript.desc}}",
+					"Type": "Basic'",
+					"Category": -26,
+					"Price": 4000,
+					"Texture": "Mods/{{ModId}}/manuscript",
+					"SpriteIndex": 0,
+				}
+			}
+		},
+	
+	// Add Gift Tastes //////////////////////////////////////////////////////////
+
+	{
+		"Action": "EditData",
+		"Target": "Data/NPCGiftTastes",
+		"TextOperations": [
+			{
+				"Operation": "Append",
+				"Target": ["Entries", "Universal_Love"],
+				"Value": "{{ModId}}_book",
+				"Delimiter": " "
+			}
+		]
+	},
+
+	{
+		"Action": "EditData",
+		"Target": "Data/NPCGiftTastes",
+		"TextOperations": [
+			{
+				"Operation": "Append",
+				"Target": ["Fields", "Elliott", 1],
+				"Value": "{{ModId}}_manuscript",
+				"Delimiter": " "
+			},
+		],
+	},
+
+	{
+		"Action": "EditData",
+		"Target": "Data/NPCGiftTastes",
+		"TextOperations": [
+			{
+				"Operation": "Append",
+				"Target": ["Fields", "Penny", 1],
+				"Value": "{{ModId}}_manuscript",
+				"Delimiter": " "
+			},
+		],
+	},
+
+	// Add Machines //////////////////////////////////////////////////////////
+
+	{
+		"Action": "EditData",
+		"Target": "Data/BigCraftables",
+		"Entries": {
+			"{{ModId}}_WritingDesk": {
+				"Name": "{{ModId}}_WritingDesk",
+				"DisplayName": "{{i18n:Si.writdesk.name}}",
+				"Description": "{{i18n:Si.writdesk.desc}}",
+				"Texture": "Mods/{{ModId}}/desk",
+				"Price": 10,
+				"Fragility": 0,
+				"CanBePlacedOutdoors": true,
+				"CanBePlacedIndoors": true,
+				"SpriteIndex": 0,
+			},
+		},
+	},
+
+	{
+		"Action": "EditData",
+		"Target": "Data/BigCraftables",
+		"Entries": {
+			"{{ModId}}_BookBindingMachine": {
+				"Name": "{{ModId}}_BookBindingMachine",
+				"DisplayName": "{{i18n:Si.bookbinder.name}}",
+				"Description": "{{i18n:Si.bookbinder.desc}}",
+				"Texture": "Mods/{{ModId}}/binder",
+				"Price": 10,
+				"Fragility": 0,
+				"CanBePlacedOutdoors": true,
+				"CanBePlacedIndoors": true,
+				"SpriteIndex": 0,
+			},
+		},
+	},
+
+	// Add Crafting Recipes //////////////////////////////////////////////////////////
+
+	{
+		"Action": "EditData",
+		"Target": "Data/CraftingRecipes", // hardwood feather ink
+		"Entries": {
+            "{{ModId}}_WritingDesk": "709 50 814 2 444 2/Field/{{ModId}}_WritingDesk/true/default/",
+        },
+		"When": {
+				"HasSeenEvent:hostPlayer |contains={{ModId}}_Inspiration": true,
+			}
+	},
+
+	{
+		"Action": "EditData",
+		"Target": "Data/CraftingRecipes", // hardwood iron bar
+		"Entries": {
+            "{{ModId}}_BookBindingMachine": "709 50 335 2/Field/{{ModId}}_BookBindingMachine/true/default/",
+        },
+		"When": {
+				"HasSeenEvent:hostPlayer |contains={{ModId}}_Inspiration": true,
+		}
+	},
+
+	// Add Machine Rules //////////////////////////////////////////////////////////
+
+		{
+			"Action": "EditData",
+			"Target": "Data/Machines",
+			"Entries": {
+				"(BC){{ModId}}_WritingDesk": {
+					"OutputRules": [
+						{
+							"Id": "{{ModId}}_writemanuscript",
+							"Triggers": [
+								{
+									"Trigger": "ItemPlacedInMachine",
+									"RequiredItemId": "(O)Si.ECM_paper",
+									"RequiredCount": "{{BookLength}}"
+								}
+							],
+							"OutputItem": [
+								{
+									"ItemId": "(O){{ModId}}_manuscript"
+								}
+							],
+							"MinutesUntilReady": "{{WritingTime}}",
+						},
+					],
+					"AdditionalConsumedItems": [
+								{
+									"ItemId": "(O)Si.ECM_string",
+									"RequiredCount": 1,
+									"InvalidCountMessage": "{{i18n:Si.writdesk.string}}"
+								},
+								{
+									"ItemId": "(O)395",
+									"RequiredCount": 1,
+									"InvalidCountMessage": "{{i18n:Si.writdesk.coffee}}"
+								},
+					],
+				},
+			},
+		},
+
+		{
+			"Action": "EditData",
+			"Target": "Data/Machines",
+			"Entries": {
+				"(BC){{ModId}}_BookBindingMachine": {
+					"OutputRules": [
+						{
+							"Id": "{{ModId}}_bindbook",
+							"Triggers": [
+								{
+									"Trigger": "ItemPlacedInMachine",
+									"RequiredItemId": "(O){{ModId}}_manuscript",
+									"RequiredCount": 1
+								}
+							],
+							"OutputItem": [
+								{
+									"ItemId": "(O){{ModId}}_book"
+								}
+							],
+							"MinutesUntilReady": 7560
+						}
+					],
+					"AdditionalConsumedItems": [
+								{
+									"ItemId": "(O)Si.ECM_leather",
+									"RequiredCount": 1,
+									"InvalidCountMessage": "{{i18n:Si.bookbinder.leather}}"
+								},
+								{
+									"ItemId": "(O)Si.ECM_glue",
+									"RequiredCount": 1,
+									"InvalidCountMessage": "{{i18n:Si.bookbinder.glue}}"
+								},
+					],
+				}
+			},
+		},
+
+	// End //////////////////////////////////////////////////////////
+
+	]
+
+}

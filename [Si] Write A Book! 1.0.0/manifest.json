@@ -1,0 +1,17 @@
+{
+	"Name": "[Si] Write A Book!",
+	"Author": "SiTheGreat",
+	"Description": "Be the writer of your own story. Literally!",
+	"Version": "1.0.0",
+	"UniqueID": "Si.WAB",
+	"UpdateKeys": [ "Nexus:" ],
+	"ContentPackFor": {
+		"UniqueID": "Pathoschild.ContentPatcher"
+	},
+	"Dependencies": [
+		{
+        		"UniqueID": "Si.ECM",
+        		"IsRequired": true
+		},
+	]
+}

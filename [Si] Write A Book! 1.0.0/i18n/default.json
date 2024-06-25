@@ -1,0 +1,12 @@
+{
+	"Si.writdesk.name": "Writing Desk",
+	"Si.writdesk.desc": "A desk used for writing manuscripts, using paper, string, and good cup of coffee.",
+	"Si.writdesk.string": "You'll need some string to hold your manuscript together.",
+	"Si.writdesk.coffee": "You'll need a cup of coffee before you can start writing your masterpiece.",
+	"Si.bookbinder.name": "Book-binding Machine",
+	"Si.bookbinder.desc": "A machine that binds manuscripts into books using leather and glue.",
+	"Si.bookbinder.leather": "You'll need some leather to make a cover for your book.",
+	"Si.bookbinder.glue": "You'll need some glue to attach the cover to your book.",
+	"Si.manuscript.name": "Manuscript",
+	"Si.manuscript.desc": "The final draft of your book!",
+}
