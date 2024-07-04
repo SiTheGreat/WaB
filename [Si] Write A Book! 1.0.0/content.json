@@ -13,7 +13,7 @@
 
 		"BookDescription": {
 			"Default": "A glimpse into the very simple life of a Stardew Valley farmer.",
-			"Description": "Describe your book in excruciating detail!"
+			"Description": "Describe your story in excruciating detail!"
 		},
 
 		"BookColor": {
@@ -49,7 +49,7 @@
 			"Action": "EditData",
 			"Target": "Data/Events/Farm", // e 1848481 Elliott 8h event
 			"Entries": {
-				"{{ModId}}_Inspiration/e 1848481/f Elliott 2000": "continue/26 25/farmer 15 31 0/pause 400//message \"You are overcome by a burst of inspiration.\"/pause 200/end",
+				"{{ModId}}_Inspiration/e 1848481/f Elliott 2000": "continue/26 25/farmer 15 31 0/fade/pause 400//message \"You are overcome by a burst of inspiration.\"/pause 200/end/fade",
 				}
 		},
 
@@ -114,6 +114,7 @@
 					"Price": 4000,
 					"Texture": "Mods/{{ModId}}/manuscript",
 					"SpriteIndex": 0,
+					"ExcludeFromShippingCollection": true,
 				}
 			}
 		},
