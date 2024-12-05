@@ -17,7 +17,7 @@
 		},
 
 		"BookColor": {
-			"AllowValues": "Red, Yellow, LightGreen, DarkGreen, Blue, Purple, Pink, Black",
+			"AllowValues": "Red, Yellow, LightGreen, DarkGreen, Blue, Purple, Pink, Black, Ace, Agender, Aro, Aroace, Balloon, Bi, BlackBat, Boat, Butterfly1, Butterfly2, Cat, Chef, Cloud, Cocoa, Cream, Dog, Frog, Gay, Heart, Horse, House, Intersex, Joja, Leaf, Lesbian, Magic, Mushroom, Nonbinary, Pan, Parsnip, Pine, Planet, Pride, Progress, Pumpkin, RedBat, Skull, Star1, Star2, Storm, Sun, Sunflower, Sword, Trans, UFO, Umbrella, YellowBat",
 			"Default": "Purple",
 			"Description": "Always judge a book by its cover!"
 		},
@@ -35,6 +35,12 @@
 		"BookPrice": {
 			"Default": 10000,
 			"Description": "Decide what your passionately inscribed words are worth!"
+		},
+
+		"MachineColor": {
+			"AllowValues": "Oak, Walnut, Birch, Mahogany, Modern, Winter",
+			"Default": "Oak",
+			"Description": "Make sure your machines match your home!"
 		},
 
 	},
@@ -70,13 +76,13 @@
 		{
 			"Action": "Load",
 			"Target": "Mods/{{ModId}}/desk",
-			"FromFile": "Assets/WritingDesk.png"
+			"FromFile": "Assets/{{MachineColor}}_WritingDesk.png"
 		},
 
 		{
 			"Action": "Load",
 			"Target": "Mods/{{ModId}}/binder",
-			"FromFile": "Assets/BookBindingMachine.png"
+			"FromFile": "Assets/{{MachineColor}}_BookBindingMachine.png"
 		},
 
 	// Add New Objects //////////////////////////////////////////////////////////

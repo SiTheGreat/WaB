@@ -2,7 +2,7 @@
 	"Name": "[Si] Write A Book!",
 	"Author": "SiTheGreat",
 	"Description": "Be the writer of your own story. Literally!",
-	"Version": "1.0.0",
+	"Version": "1.1.0",
 	"UniqueID": "Si.WAB",
 	"UpdateKeys": [ "Nexus:25490" ],
 	"ContentPackFor": {
