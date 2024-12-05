@@ -32,6 +32,11 @@
 			"Description": "Decide how long it will take to draft your masterpiece!"
 		},
 
+		"BindingTime": {
+			"Default": 7560,
+			"Description": "Decide how long it will take to draft your masterpiece!"
+		},
+
 		"BookPrice": {
 			"Default": 10000,
 			"Description": "Decide what your passionately inscribed words are worth!"
@@ -289,7 +294,7 @@
 									"ItemId": "(O){{ModId}}_book"
 								}
 							],
-							"MinutesUntilReady": 7560
+							"MinutesUntilReady": "{{BindingTime}}"
 						}
 					],
 					"AdditionalConsumedItems": [
